@@ -52,7 +52,7 @@ public class ProfilePage extends BasicPage {
 		Thread.sleep(1500);
 	}
 	public void getCity(String city) throws InterruptedException {
-		WebElement cityElement = driver.findElement(By.xpath("//*[@id='user_city_id']"));
+		WebElement cityElement = driver.findElement(By.xpath("//*[@id='user_city']"));
 		Select citySelect = new Select(cityElement);
 		citySelect.selectByVisibleText(city);
 		Thread.sleep(1500);
@@ -61,7 +61,7 @@ public class ProfilePage extends BasicPage {
 	public void uploadImage(String image) throws InterruptedException {
 		js.executeScript("arguments[0].click();", this.getUploadBtn());
 		Thread.sleep(3000);
-		WebElement input = driver.findElement(By.xpath("//*[@id=\"form-upload\"]/input"));
+		WebElement input = driver.findElement(By.xpath("//*[@id='form-upload']/input"));
 		input.sendKeys(image);
 	}
 	public void removeImage() {
