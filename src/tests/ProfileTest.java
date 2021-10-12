@@ -16,7 +16,7 @@ import pages.NotificationSystemPage;
 import pages.ProfilePage;
 
 public class ProfileTest extends BasicTest {
-	@Test
+	@Test(priority = 1)
 	public void profileTest() throws InterruptedException, IOException {
 		driver.get(this.baseURL + "/guest-user/login-form");
 		Thread.sleep(2000);
@@ -45,8 +45,8 @@ public class ProfileTest extends BasicTest {
 		Thread.sleep(2000);
 		}
 	
-		@Test
-		public void editProfilePicture() throws InterruptedException {
+		@Test(priority = 2)
+		public void editProfilePicture() throws InterruptedException, IOException {
 			driver.get(this.baseURL + "/guest-user/login-form");
 			Thread.sleep(2000);
 			LocationPopUpPage locationPopUp = new LocationPopUpPage(driver, wait, js);
@@ -60,8 +60,9 @@ public class ProfileTest extends BasicTest {
 			Assert.assertTrue(notificationSystem.getMsg().contains("Login Successfull"),
 					"[ERROR]: Login message was not displayed.");
 			driver.navigate().to(baseURL + "/member/profile");
-			Thread.sleep(1500);
-			profile.uploadImage("C:\\Users\\Milan\\Downloads\\joker.jpg");
+			Thread.sleep(2500);
+			String img = new File("img/Joker.jpg").getCanonicalPath();
+			profile.uploadImage(img);
 			Thread.sleep(3000);
 			Assert.assertTrue(notificationSystem.getMsg().contains("Profile Image Uploaded Successfully"),
 					"[ERROR]: Upload successfully message was not displayed.");
