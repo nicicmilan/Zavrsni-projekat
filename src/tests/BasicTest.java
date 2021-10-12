@@ -47,7 +47,10 @@ public abstract class BasicTest {
 				File save = new File ("screenshots/" + fileName);
 				FileHandler.copy(ss, save);
 				Thread.sleep(1500);
-				driver.quit();
+				this.driver.quit();
+			}
+			else {
+			this.driver.quit();
 			}
 		}
 }
